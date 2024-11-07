@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Padrón Electoral - Dashboard Interactivo</title>
+    <style>
+        /* Estilos básicos */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            color: #333;
+            background-color: #f5f6fa;
+        }
+
+        /* Cabecera */
+        header {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        /* Menú de navegación */
+        .navbar {
+            display: flex;
+            justify-content: center;
+            background-color: #34495e;
+            padding: 10px 0;
+            position: relative;
+        }
+
+        .navbar > a, .submenu a {
+            color: #ecf0f1;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: background-color 0.3s;
+            display: inline-block;
+        }
+
+        .navbar > a:hover, .submenu a:hover {
+            background-color: #2c3e50;
+            border-radius: 5px;
+        }
+
+        /* Submenú */
+        .submenu {
+            display: none;
+            background-color: #34495e;
+            position: absolute;
+            top: 50px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+        }
+
+        .submenu .submenu-item {
+            padding: 5px 0;
+        }
+
+        /* Estilos para el contenido */
+        .section {
+            display: none;
+            padding: 20px;
+            text-align: center;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 90%;
+            margin: 20px auto;
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        /* Contenedor de Tableau */
+        .tableau-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .tableau-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Pie de página */
+        footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            text-align: center;
+            padding: 15px;
+            font-size: 0.9rem;
+        }
+
+        /* Botón para volver al inicio */
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #34495e;
+            color: #ecf0f1;
+            text-decoration: none;
+            font-size: 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .back-btn:hover {
+            background-color: #2c3e50;
+        }
+
+        /* Responsividad para dispositivos móviles */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+            }
+            .navbar > a {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Cabecera -->
+<header>
+    Padrón Electoral - Dashboard Interactivo
+</header>
+
+<!-- Menú de navegación -->
+<div class="navbar" id="navbar">
+    <a href="#" onclick="toggleSubmenu()">Padrón Electoral</a>
+</div>
+
+<!-- Submenú Capital e Interior -->
+<div class="submenu" id="submenu">
+    <div class="submenu-item"><a href="#" onclick="showSection('capital')">Capital</a></div>
+    <div class="submenu-item"><a href="#" onclick="showSection('interior')">Interior</a></div>
+</div>
+
+<!-- Submenú Capital Detallado -->
+<div class="submenu" id="submenu-capital">
+    <div class="submenu-item"><a href="#" onclick="showSection('segmentacion')">Segmentación por Edad</a></div>
+    <div class="submenu-item"><a href="#" onclick="showSection('electores')">Electores</a></div>
+    <div class="submenu-item"><a href="#" onclick="showSection('circuitos')">Circuitos</a></div>
+</div>
+
+<!-- Sección Segmentación por Edad -->
+<div id="segmentacion" class="section">
+    <h2>Segmentación por Edad</h2>
+    <div class="tableau-container">
+        <iframe src="https://public.tableau.com/views/TU_TABLERO_SEGMENTACION/TU_HOJA?embed=true" allowfullscreen></iframe>
+    </div>
+    <a href="#" class="back-btn" onclick="showSection('')">Volver al Inicio</a>
+</div>
+
+<!-- Sección Electores -->
+<div id="electores" class="section">
+    <h2>Electores</h2>
+    <div class="tableau-container">
+        <iframe src="https://public.tableau.com/views/TU_TABLERO_ELECTORES/TU_HOJA?embed=true" allowfullscreen></iframe>
+    </div>
+    <a href="#" class="back-btn" onclick="showSection('')">Volver al Inicio</a>
+</div>
+
+<!-- Sección Circuitos -->
+<div id="circuitos" class="section">
+    <h2>Circuitos</h2>
+    <div class="tableau-container">
+        <iframe src="https://public.tableau.com/views/TU_TABLERO_CIRCUITOS/TU_HOJA?embed=true" allowfullscreen></iframe>
+    </div>
+    <a href="#" class="back-btn" onclick="showSection('')">Volver al Inicio</a>
+</div>
+
+<!-- Pie de página -->
+<footer>
+    © 2023 Padrón Electoral. Todos los derechos reservados.
+</footer>
+
+<!-- Script para manejar el menú y submenús -->
+<script>
+    function toggleSubmenu() {
+        var submenu = document.getElementById("submenu");
+        submenu.style.display = submenu.style.display === "block" ? "none" : "block";
+    }
+
+    function showSection(sectionId) {
+        // Ocultar todas las secciones y submenús
+        var sections = document.querySelectorAll('.section');
+        sections.forEach(function(section) {
+            section.style.display = "none";
+        });
+
+        var submenuCapital = document.getElementById("submenu-capital");
+        submenuCapital.style.display = "none";
+
+        // Mostrar la sección o submenú correspondiente
+        if (sectionId === 'capital') {
+            submenuCapital.style.display = "block";
+        } else if (sectionId) {
+            document.getElementById(sectionId).style.display = "block";
+        }
+    }
+
+    window.onload = function() {
+        showSection('');
+    }
+</script>
+
+</body>
+</html>
