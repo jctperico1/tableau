@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Interactivo Profesional</title>
+    <style>
+        /* Estilos básicos */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            color: #333;
+            background-color: #f4f4f9;
+        }
+
+        /* Cabecera */
+        header {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        /* Menú de navegación */
+        .navbar {
+            display: flex;
+            justify-content: center;
+            background-color: #34495e;
+            padding: 10px 0;
+        }
+
+        .navbar a {
+            color: #ecf0f1;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: background-color 0.3s;
+        }
+
+        .navbar a:hover {
+            background-color: #2c3e50;
+            border-radius: 5px;
+        }
+
+        .navbar .menu-icon {
+            display: none;
+        }
+
+        /* Contenido principal */
+        .section {
+            display: none;
+            padding: 20px;
+            text-align: center;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 90%;
+            margin: 20px auto;
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        /* Contenedor de Tableau */
+        .tableau-container {
+            position: relative;
+            padding-bottom: 100%; /* Relación de aspecto 16:9 */
+            height: 0;
+            overflow: hidden;
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .tableau-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Pie de página */
+        footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            text-align: center;
+            padding: 15px;
+            font-size: 0.9rem;
+        }
+
+        /* Botón para volver al inicio */
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #34495e;
+            color: #ecf0f1;
+            text-decoration: none;
+            font-size: 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .back-btn:hover {
+            background-color: #2c3e50;
+        }
+
+        /* Responsividad para dispositivos móviles */
+        @media (max-width: 768px) {
+            .navbar a {
+                display: none;
+            }
+
+            .navbar .menu-icon {
+                display: block;
+                color: #ecf0f1;
+                cursor: pointer;
+                padding: 14px;
+            }
+
+            .navbar.responsive a {
+                display: block;
+                padding: 10px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Cabecera -->
+<header>
+    Dashboards Interactivos Profesionales
+</header>
+
+<!-- Menú de navegación -->
+<div class="navbar" id="navbar">
+    <a href="#capital" onclick="showSection('capital')">Capital</a>
+    <a href="#interior" onclick="showSection('interior')">Interior</a>
+    <span class="menu-icon" onclick="toggleMenu()">☰</span>
+</div>
+
+<!-- Sección Capital -->
+<div id="capital" class="section">
+    <h2>Capital</h2>
+    <p>Visualización de datos relacionados con el capital.</p>
+    <div class="tableau-container">
+        <iframe src=https://public.tableau.com/views/EleccionesVenezuela_2024_17308626070240/full?:language=es-ES&:sid=&:display_count=n&:origin=viz_share_link allowfullscreen></iframe>
+    </div>
+    <a href="#" class="back-btn" onclick="showSection('')">Volver al Inicio</a>
+</div>
+
+<!-- Sección Interior -->
+<div id="interior" class="section">
+    <h2>Interior</h2>
+    <p>Visualización de datos relacionados con el interior.</p>
+    <div class="tableau-container">
+        <!-- Inserta el iframe de Tableau aquí -->
+        <div class='tableauPlaceholder' id='viz1730899226600' style='position: relative'><noscript><a href='#'><img alt='full ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;El&#47;EleccionesVenezuela_2024_17308626070240&#47;full&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='EleccionesVenezuela_2024_17308626070240&#47;full' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;El&#47;EleccionesVenezuela_2024_17308626070240&#47;full&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='es-ES' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1730899226600');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.minWidth='420px';vizElement.style.maxWidth='740px';vizElement.style.width='100%';vizElement.style.height='1727px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+    </div>
+    <a href="#" class="back-btn" onclick="showSection('')">Volver al Inicio</a>
+</div>
+
+<!-- Pie de página -->
+<footer>
+    © 2023 Dashboards Interactivos Profesionales. Todos los derechos reservados.
+</footer>
+
+<!-- Script para manejar el menú responsivo y mostrar secciones -->
+<script>
+    // Alternar el menú en dispositivos móviles
+    function toggleMenu() {
+        var navbar = document.getElementById("navbar");
+        if (navbar.className === "navbar") {
+            navbar.className += " responsive";
+        } else {
+            navbar.className = "navbar";
+        }
+    }
+
+    // Mostrar solo la sección seleccionada
+    function showSection(sectionId) {
+        var sections = document.querySelectorAll('.section');
+        sections.forEach(function(section) {
+            section.style.display = "none";
+        });
+
+        // Mostrar la sección seleccionada o el inicio si sectionId está vacío
+        if (sectionId) {
+            document.getElementById(sectionId).style.display = "block";
+        }
+    }
+
+    // Mostrar la sección de inicio por defecto
+    window.onload = function() {
+        showSection('');
+    }
+</script>
+
+</body>
+</html>
